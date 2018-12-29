@@ -22,6 +22,9 @@ $(function() {
         user = loginbox.val()
         chatdiv.show()
         logindiv.hide()
+        socket.emit('login', {
+            user: user
+        })
     })
     socket.on('recv_msg', function(data) {
         msglist.append($('<li>' + data.user + ': ' + data.message + '</li>'))
